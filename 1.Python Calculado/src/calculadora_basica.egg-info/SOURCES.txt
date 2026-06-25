@@ -1,0 +1,15 @@
+README.md
+pyproject.toml
+src/calculadora/__init__.py
+src/calculadora/__main__.py
+src/calculadora/calculadora.py
+src/calculadora/operaciones.py
+src/calculadora/web.py
+src/calculadora_basica.egg-info/PKG-INFO
+src/calculadora_basica.egg-info/SOURCES.txt
+src/calculadora_basica.egg-info/dependency_links.txt
+src/calculadora_basica.egg-info/entry_points.txt
+src/calculadora_basica.egg-info/requires.txt
+src/calculadora_basica.egg-info/top_level.txt
+tests/test_calculadora.py
+tests/test_web.py
