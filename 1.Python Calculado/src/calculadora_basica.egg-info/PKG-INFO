@@ -1,0 +1,62 @@
+Metadata-Version: 2.4
+Name: calculadora-basica
+Version: 0.1.0
+Summary: Calculadora basica en Python con interfaz web Flask
+Author: Proyecto Calculadora
+Requires-Python: >=3.10
+Description-Content-Type: text/markdown
+Requires-Dist: Flask>=3.0.0
+
+# Calculadora Basica en Python
+
+Proyecto con estructura modular y orientada a clases para operaciones basicas:
+
+- Suma
+- Resta
+- Multiplicacion
+- Division (con manejo de division por cero)
+
+Incluye interfaz interactiva por consola, validacion de entradas numericas y version web con Flask en localhost.
+
+## Estructura
+
+- `src/calculadora/operaciones.py`: clases de operaciones.
+- `src/calculadora/calculadora.py`: clase `Calculadora` que orquesta operaciones.
+- `src/calculadora/web.py`: app Flask para usar la calculadora en navegador.
+- `tests/test_calculadora.py`: pruebas unitarias.
+- `tests/test_web.py`: pruebas de la interfaz web.
+- `pyproject.toml`: configuracion de empaquetado e instalacion.
+
+Proyecto preparado para ejecucion en localhost con Flask.
+
+## Instalar como paquete
+
+```bash
+python -m pip install -e .
+```
+
+## Ejecutar en localhost con Flask
+
+Instala dependencias:
+
+```bash
+python -m pip install -e .
+```
+
+Inicia la app web:
+
+```bash
+calculadora-web
+```
+
+Abre en navegador:
+
+```text
+http://127.0.0.1:5000
+```
+
+## Probar
+
+```bash
+python -m unittest discover -s tests -p "test_*.py"
+```
