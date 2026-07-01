@@ -1,6 +1,6 @@
 # Calculadora Basica en Python
 
-Proyecto con estructura modular y orientada a clases para operaciones basicas:
+Proyecto con estructura modular y enfoque funcional para operaciones basicas:
 
 - Suma
 - Resta
@@ -11,61 +11,29 @@ Incluye interfaz interactiva por consola, validacion de entradas numericas y ver
 
 ## Estructura
 
-- `src/calculadora/operaciones.py`: clases de operaciones.
-- `src/calculadora/calculadora.py`: clase `Calculadora` que orquesta operaciones.
+- `src/calculadora/calculadora.py`: funcion `calcular(operacion, a, b)`.
 - `src/calculadora/web.py`: app Flask para usar la calculadora en navegador.
 - `tests/test_calculadora.py`: pruebas unitarias.
 - `tests/test_web.py`: pruebas de la interfaz web.
 - `pyproject.toml`: configuracion de empaquetado e instalacion.
 
-## Documentacion de clases
+## Documentacion de funciones
 
-### `Operacion` (clase abstracta)
-
-Ubicacion: `src/calculadora/operaciones.py`
-
-Define el contrato comun `ejecutar(a, b)` para cualquier operacion.
-Su objetivo es garantizar una interfaz uniforme entre implementaciones.
-
-### `Suma`
-
-Ubicacion: `src/calculadora/operaciones.py`
-
-Implementa `ejecutar(a, b)` y retorna `a + b`.
-
-### `Resta`
-
-Ubicacion: `src/calculadora/operaciones.py`
-
-Implementa `ejecutar(a, b)` y retorna `a - b`.
-
-### `Multiplicacion`
-
-Ubicacion: `src/calculadora/operaciones.py`
-
-Implementa `ejecutar(a, b)` y retorna `a * b`.
-
-### `Division`
-
-Ubicacion: `src/calculadora/operaciones.py`
-
-Implementa `ejecutar(a, b)` y retorna `a / b`.
-Si `b` es 0, lanza `ZeroDivisionError` para proteger la logica de negocio.
-
-### `Calculadora`
+### `calcular`
 
 Ubicacion: `src/calculadora/calculadora.py`
 
-Actua como fachada: reune las operaciones y expone metodos simples
-(`sumar`, `restar`, `multiplicar`, `dividir`) para que la capa web no
-dependa de detalles internos.
+Recibe `operacion`, `a` y `b`, ejecuta `sumar`, `restar`, `multiplicar`
+o `dividir`, y retorna el resultado.
+Si `b` es 0 al dividir, lanza `ZeroDivisionError("No se puede dividir entre cero")`.
+Si la operacion no existe, lanza `ValueError("Operacion no valida")`.
 
 ### `TestCalculadora`
 
 Ubicacion: `tests/test_calculadora.py`
 
-Verifica que la clase `Calculadora` produzca resultados correctos y que
-el error por division entre cero se lance cuando corresponde.
+Verifica que `calcular(...)` produzca resultados correctos, que se lance
+el error por division entre cero y que una operacion invalida lance `ValueError`.
 
 ### `TestWebCalculadora`
 

@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request
 
-from .calculadora import Calculadora
+from .calculadora import calcular
 
 
 def create_app() -> Flask:
@@ -11,14 +11,13 @@ def create_app() -> Flask:
     - POST: valida entradas, ejecuta la operacion y muestra resultado.
     """
     app = Flask(__name__, template_folder="templates", static_folder="static")
-    calc = Calculadora()
 
     @app.get("/")
     def index() -> str:
         return render_template("index.html")
 
     @app.post("/")
-    def calcular() -> str:
+    def calcular_post() -> str:
         numero_a = request.form.get("a", "").strip()
         numero_b = request.form.get("b", "").strip()
         operacion = request.form.get("operacion", "").strip()
@@ -41,16 +40,9 @@ def create_app() -> Flask:
             )
 
         try:
-            if operacion == "sumar":
-                resultado = calc.sumar(a, b)
-            elif operacion == "restar":
-                resultado = calc.restar(a, b)
-            elif operacion == "multiplicar":
-                resultado = calc.multiplicar(a, b)
-            elif operacion == "dividir":
-                resultado = calc.dividir(a, b)
-            else:
-                error = "Operacion no valida."
+            resultado = calcular(operacion, a, b)
+        except ValueError as exc:
+            error = str(exc)
         except ZeroDivisionError as exc:
             error = str(exc)
 
