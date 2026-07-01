@@ -1,3 +1,3 @@
-from .calculadora import Calculadora
+from .calculadora import calcular
 
-__all__ = ["Calculadora"]
+__all__ = ["calcular"]
